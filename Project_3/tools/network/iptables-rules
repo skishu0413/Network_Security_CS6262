@@ -1,0 +1,14 @@
+#!/bin/sh
+echo "Importing iptables rules"
+
+# The following lines redirects the traffic generated from the malware
+# in the VM to our local environment (Ubuntu VM).
+# While the malware makes false connection to our server,
+# we can watch the contents of traffic through WireShark.
+# Do not forget to run ./reset after updating this.
+
+# Uncomment following lines (or add rules) to adjust filtering rules
+sudo iptables -t nat -A PREROUTING -p tcp -s 192.168.133.101 -d 40.121.13.222 --dport 80 -j DNAT --to 192.168.133.1:80
+sudo iptables -t nat -A PREROUTING -p tcp -s 192.168.133.101 -d 128.61.240.66 --dport 80 -j DNAT --to 192.168.133.1:80
+sudo iptables -t nat -A PREROUTING -p tcp -s 192.168.133.101 -d 143.215.130.19 --dport 80 -j DNAT --to 192.168.133.1:80
+sudo iptables -t nat -A PREROUTING -p tcp -s 192.168.133.101 -d 192.168.122.1 --dport 80  -j DNAT --to 192.168.133.1:80
